@@ -79,7 +79,7 @@ export default function LoginPage() {
 
         {/* <p className="text-white text-[18px] text-center">Login with a social media account</p> */}
       </form>
-      <h1 className="flex text-center text-[60px] font-mono select-none">Ships <br />Maintenance</h1>
+      <h1 className="flex text-center text-[60px] font-light select-none">SHIPS <br />MAINTENANCE</h1>
     </div>
   );
 }

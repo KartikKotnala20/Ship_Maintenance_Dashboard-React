@@ -6,40 +6,61 @@ export default function ShipList() {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <h2 className="text-xl font-bold mb-4">Ships</h2>
-      <button
-        onClick={() => navigate("/ships/new")}
-        className="mb-4 bg-green-500 text-white px-4 py-2 rounded"
-      >
-        Add Ship
-      </button>
-      <div className="grid gap-4">
+    <div className="p-8  min-h-screen">
+      <h2 className="text-3xl font-extrabold text-center mb-6 text-gray-800">
+        Ships
+      </h2>
+
+      <div className="flex justify-center mb-6 ">
+        
+        <button class="group relative h-12 rounded-full border border-neutral-200 bg-blue-100 px-4 text-neutral-950" onClick={() => navigate("/dashboard/ships/new")} >
+          <span class="relative inline-flex overflow-hidden">
+            <div class="translate-y-0 skew-y-0 transition duration-500 group-hover:-translate-y-[110%] group-hover:skew-y-12">
+              Add Ship
+            </div>
+            <div class="absolute translate-y-[110%] skew-y-12 transition duration-500 group-hover:translate-y-0 group-hover:skew-y-0">
+              Add Ship
+            </div>
+          </span>
+        </button>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {ships.map((ship) => (
-          <div key={ship.id} className="border p-4 rounded shadow">
-            <h3 className="font-bold">{ship.name}</h3>
-            <p>IMO: {ship.imo}</p>
-            <p>Flag: {ship.flag}</p>
-            <p>Status: {ship.status}</p>
-            <div className="flex gap-2 mt-2">
-              <button
-                onClick={() => navigate(`/ships/edit/${ship.id}`)}
-                className="bg-blue-500 text-white px-3 py-1 rounded"
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => deleteShip(ship.id)}
-                className="bg-red-500 text-white px-3 py-1 rounded"
-              >
-                Delete
-              </button>
-              <button
-                onClick={() => navigate(`/ships/${ship.id}`)}
-                className="bg-gray-500 text-white px-3 py-1 rounded"
-              >
-                View
-              </button>
+          <div
+            key={ship.id}
+            className="relative border p-6 rounded-lg shadow-lg bg-cover bg-center brightness-100 text-white transition-transform transform duration-700 hover:scale-105"
+            style={{
+              backgroundImage: `url('https://cdn.pixabay.com/photo/2020/12/06/22/51/ship-5810249_1280.jpg')`,
+            }}
+          >
+            <div className="relative ">
+              <h3 className="font-bold text-xl">{ship.name}</h3>
+              <p className="text-sm">IMO: {ship.imo}</p>
+              <p className="text-sm">Flag: {ship.flag}</p>
+              <p className="text-sm">Status: {ship.status}</p>
+
+              <div className="flex gap-2 mt-3">
+                <button
+                  onClick={() => navigate(`/dashboard/ships/edit/${ship.id}`)}
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-transform transform hover:scale-105"
+                >
+                  Edit
+                </button>
+
+                <button
+                  onClick={() => deleteShip(ship.id)}
+                  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded transition-transform transform hover:scale-105"
+                >
+                  Delete
+                </button>
+                <button
+                  onClick={() => navigate(`/dashboard/ships/${ship.id}`)}
+                  className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded transition-transform transform hover:scale-105"
+                >
+                  View
+                </button>
+              </div>
             </div>
           </div>
         ))}

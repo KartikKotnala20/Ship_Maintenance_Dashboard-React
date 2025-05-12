@@ -10,7 +10,7 @@ export default function ComponentList() {
       <h2 className="text-xl font-bold mb-4">Components</h2>
       <button
         className="mb-4 bg-green-600 text-white px-4 py-2 rounded"
-        onClick={() => navigate("/components/new")}
+        onClick={() => navigate("/dashboard/components/new")}
       >
         Add Component
       </button>

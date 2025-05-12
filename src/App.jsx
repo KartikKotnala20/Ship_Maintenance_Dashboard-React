@@ -8,26 +8,42 @@ import ShipForm from "./components/Ships/ShipForm.jsx";
 import ComponentsPage from "./pages/ComponentsPage";
 import ComponentForm from "./components/Components/ComponentForm";
 import ComponentDetail from "./components/Components/ComponentDetail";
+import JobsPage from "./pages/JobsPage.jsx";
+import JobCalendar from "./components/Jobs/JobCalendar";
+import Layout from "./pages/layout.jsx";
+
+
+
+
+
+
+
+
 
 export default function App() {
   const { user } = useAuth();
 
   return (
+    
+    
     <Routes>
       <Route path="/" element={<Navigate to="/login" />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route
-        path="/dashboard"
-        element={user ? <DashboardPage /> : <Navigate to="/login" />}
-      />
-      <Route path="/ships" element={<ShipsPage />} />
-      <Route path="/ships/new" element={<ShipForm />} />
-      <Route path="/ships/edit/:id" element={<ShipForm />} />
-      <Route path="/ships/:id" element={<ShipDetailPage />} />
-      <Route path="/components" element={<ComponentsPage />} />
-      <Route path="/components/new" element={<ComponentForm />} />
-      <Route path="/components/edit/:id" element={<ComponentForm />} />
-      <Route path="/components/:id" element={<ComponentDetail />} />
-    </Routes>
+          <Route path="/login" element={<LoginPage />} />
+           {/* <Route path="/dashboard" element={user ? <DashboardPage /> : <Navigate to="/login" />}> */}
+          <Route path="/dashboard" element={<DashboardPage/>}>
+              <Route path="ships" element={<ShipsPage />} />
+              <Route path="components" element={<ComponentsPage />} />
+              <Route path="ships/new" element={<ShipForm />} />
+              <Route path="ships/edit/:id" element={<ShipForm />} />
+              <Route path="ships/:id" element={<ShipDetailPage />} />
+              <Route path="components/new" element={<ComponentForm />} />
+              <Route path="components/edit/:id" element={<ComponentForm />} />
+              <Route path="components/:id" element={<ComponentDetail />} />
+              <Route path="jobs" element={<JobsPage/>} /> 
+              <Route path="calendar" element={<JobCalendar />} />
+           </Route>
+        
+       </Routes>
+   
   );
 }

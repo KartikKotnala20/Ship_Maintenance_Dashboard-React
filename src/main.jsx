@@ -6,6 +6,9 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import { ShipsProvider } from "./contexts/ShipsContext.jsx";
 import { ComponentsProvider } from "./contexts/ComponentsContext";
+import { JobsProvider } from './contexts/JobsContext.jsx';
+
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
@@ -13,7 +16,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <AuthProvider>
         <ShipsProvider>
           <ComponentsProvider>
+          <JobsProvider>
             <App />
+          </JobsProvider>
           </ComponentsProvider>          
         </ShipsProvider>
       </AuthProvider>
