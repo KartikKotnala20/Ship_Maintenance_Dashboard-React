@@ -9,7 +9,7 @@ export default function ShipDetail() {
 
   if (!ship)
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-300 ">
+      <div className="flex items-center justify-center min-h-screen bg-gray-300 w-screen">
         <p className="p-4 text-lg font-semibold bg-red-100 text-red-600 rounded-lg shadow-md">
           🚢 Ship not found
         </p>
@@ -18,7 +18,7 @@ export default function ShipDetail() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center bg-cover  bg-center px-4  "
+      className="min-h-screen flex items-center justify-center bg-cover bg-center px-4 w-screen"
       style={{
         backgroundImage: "url('https://cdn.pixabay.com/photo/2020/12/06/22/51/ship-5810249_1280.jpg')",
       }}

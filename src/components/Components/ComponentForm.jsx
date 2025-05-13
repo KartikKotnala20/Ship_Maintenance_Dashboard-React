@@ -36,7 +36,7 @@ export default function ComponentForm() {
     } else {
       addComponent({ ...form, id: uuidv4() });
     }
-    navigate("/components");
+    navigate("/dashboard/components");
   };
 
   return (
@@ -49,7 +49,7 @@ export default function ComponentForm() {
           <option key={ship.id} value={ship.id}>{ship.name}</option>
         ))}
       </select>
-      <input name="installDate" type="date" value={form.installDate} onChange={handleChange} required className="w-full p-2 mb-3 border rounded" />
+      <input name="installDate" type="date" value={form.installDate}   onChange={handleChange} required className="w-full p-2 mb-3 border rounded" />
       <input name="lastMaintenanceDate" type="date" value={form.lastMaintenanceDate} onChange={handleChange} required className="w-full p-2 mb-3 border rounded" />
       <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded w-full">{editing ? "Update" : "Add"}</button>
     </form>
