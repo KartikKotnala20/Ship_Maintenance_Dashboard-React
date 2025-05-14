@@ -6,14 +6,14 @@ export default function ShipList() {
   const navigate = useNavigate();
 
   return (  
-    <div className="p-8  min-h-screen bg-red-100 ">
+    <div className="p-8  min-h-screen bg-[#F2F9FF] ">
       <h2 className="text-3xl font-extrabold text-center mb-6 text-gray-800">
         Ships
       </h2>
 
-      <div className="flex justify-start mb-6  ">
+      <div className="flex justify-end mb-6  ">
         
-        <button class="group relative h-12 rounded-full border border-neutral-200 bg-blue-100 px-4 text-neutral-950" onClick={() => navigate("/dashboard/ships/new")} >
+        <button class="group relative h-12 rounded-full border border-neutral-200 bg-gradient-to-r from-blue-500 to-purple-600 px-4 text-white" onClick={() => navigate("/dashboard/ships/new")} >
           <span class="relative inline-flex overflow-hidden">
             <div class="translate-y-0 skew-y-0 transition duration-500 group-hover:-translate-y-[120%] group-hover:skew-y-10">
               Add Ship

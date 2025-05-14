@@ -1,4 +1,3 @@
-import { Outlet } from "react-router-dom";
 import ShipList from "../components/Ships/ShipList";
 
 export default function ShipsPage() {

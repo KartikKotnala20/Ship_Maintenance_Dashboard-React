@@ -11,13 +11,8 @@ import ComponentDetail from "./components/Components/ComponentDetail";
 import JobsPage from "./pages/JobsPage.jsx";
 import JobCalendar from "./components/Jobs/JobCalendar";
 import Layout from "./pages/layout.jsx";
-
-
-
-
-
-
-
+import DashboardHome from "./pages/DashboardHome"; 
+import NotificationCenter from "./components/Notifications/NotificationCenter.jsx";
 
 
 export default function App() {
@@ -31,6 +26,7 @@ export default function App() {
           <Route path="/login" element={<LoginPage />} />
            {/* <Route path="/dashboard" element={user ? <DashboardPage /> : <Navigate to="/login" />}> */}
           <Route path="/dashboard" element={<DashboardPage/>}>
+              <Route index element={<DashboardHome />} />
               <Route path="ships" element={<ShipsPage />} />
               <Route path="components" element={<ComponentsPage />} />
               <Route path="ships/new" element={<ShipForm />} />
@@ -41,6 +37,7 @@ export default function App() {
               <Route path="components/:id" element={<ComponentDetail />} />
               <Route path="jobs" element={<JobsPage/>} /> 
               <Route path="calendar" element={<JobCalendar />} />
+              <Route path="notifications" element={<NotificationCenter />} />
            </Route>
         
        </Routes>

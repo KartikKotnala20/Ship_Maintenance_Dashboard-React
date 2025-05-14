@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { useJobs } from "../../contexts/JobsContext";
-import { useComponents } from "../../contexts/ComponentsContext"; // You must have this context defined
+import { useComponents } from "../../contexts/ComponentsContext";
+import { getSession } from "../../utils/localStorageUtils";
+import { canEditJobs } from "../../utils/roleUtils";
 
 const JobForm = () => {
   const { addJob } = useJobs();
   const { components } = useComponents();
+
+  const user = getSession();
+  const canEdit = user && canEditJobs(user.role);
 
   const [form, setForm] = useState({
     componentId: "",
@@ -49,15 +54,26 @@ const JobForm = () => {
     });
   };
 
-  return (
-    <form onSubmit={handleSubmit} className="p-4 border rounded space-y-2">
-      <h2 className="text-lg font-bold">Add Maintenance Job</h2>
+  if (!canEdit) {
+    return (
+      <div className="p-4 text-red-600 font-semibold">
+        You do not have permission to create maintenance jobs.
+      </div>
+    );
+  }
 
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="rounded space-y-2 max-w-sm mx-auto bg-[#F2F9FF]"
+    >
+      <h2 className="text-lg font-bold">Add Maintenance Job</h2>
       <select
+        id="countries"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         name="componentId"
         value={form.componentId}
         onChange={handleComponentChange}
-        className="w-full border p-2"
         required
       >
         <option value="">Select Component</option>
@@ -74,7 +90,7 @@ const JobForm = () => {
         placeholder="Job Type (e.g., Inspection)"
         value={form.type}
         onChange={handleChange}
-        className="w-full border p-2"
+         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         required
       />
 
@@ -82,7 +98,7 @@ const JobForm = () => {
         name="priority"
         value={form.priority}
         onChange={handleChange}
-        className="w-full border p-2"
+         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       >
         <option value="High">High</option>
         <option value="Medium">Medium</option>
@@ -95,7 +111,7 @@ const JobForm = () => {
         placeholder="Engineer ID (e.g., 3)"
         value={form.assignedEngineerId}
         onChange={handleChange}
-        className="w-full border p-2"
+        className="w-full border p-2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         required
       />
 
@@ -104,11 +120,14 @@ const JobForm = () => {
         name="scheduledDate"
         value={form.scheduledDate}
         onChange={handleChange}
-        className="w-full border p-2"
+        className="w-full border p-2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         required
       />
 
-      <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
+      <button
+        type="submit"
+        className="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer"
+      >
         Create Job
       </button>
     </form>
@@ -116,5 +135,3 @@ const JobForm = () => {
 };
 
 export default JobForm;
-
-
