@@ -15,17 +15,13 @@ function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  // Detect screen resize
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const toggleSidebar = () => {
-    setIsOpen((prev) => !prev);
-  };
-
+  const toggleSidebar = () => setIsOpen((prev) => !prev);
   const closeSidebar = () => {
     if (isMobile) setIsOpen(false);
   };
@@ -36,27 +32,27 @@ function Sidebar() {
 
   return (
     <>
-      {/* Hamburger Menu (mobile only) */}
+      {/* Hamburger Menu */}
       {isMobile && (
-        <div className="fixed top-4 left-4 z-50 md:hidden">
-          <button onClick={toggleSidebar}>
+        <div className="fixed top-4 left-4 z-50">
+          <button onClick={toggleSidebar} aria-label="Toggle sidebar">
             <HiMenu className="text-black text-3xl" />
           </button>
         </div>
       )}
 
-      {/* Overlay */}
+      {/* Overlay (when sidebar is open) */}
       {isMobile && isOpen && (
         <div
           className="fixed inset-0 bg-[#183B4E] bg-opacity-50 z-40"
           onClick={closeSidebar}
-        ></div>
+        />
       )}
 
       {/* Sidebar */}
       <div
         className={classNames(
-          "bg-[#183B4E] fixed top-0 left-0 h-full z-50 w-[70%] md:w-[15%] p-3 pb-0 transition-transform duration-300",
+          "bg-[#183B4E] fixed top-0 left-0 h-full z-50 w-[75%] sm:w-[50%] md:w-[15%] p-3 transition-transform duration-300 ease-in-out",
           {
             "-translate-x-full": isMobile && !isOpen,
             "translate-x-0": isOpen || !isMobile,
@@ -71,8 +67,8 @@ function Sidebar() {
           </span>
         </div>
 
-        {/* Navigation */}
-        <div className="flex-1 py-8 flex flex-col gap-0.5">
+        {/* Navigation Links */}
+        <div className="py-8 flex flex-col gap-0.5">
           {DASHBOARD_SIDEBAR_LINKS.map((item) => (
             <SidebarLink
               key={item.key}
@@ -83,10 +79,10 @@ function Sidebar() {
           ))}
         </div>
 
-        {/* Logout */}
-        <div className="mt-32 ">
+        {/* Logout Button */}
+        <div className="mt-auto mb-4">
           <button
-            className="flex items-center cursor-pointer text-neutral-400 gap-2 font-light px-3 py-2 hover:bg-neutral-700 hover:text-white active:bg-neutral-600 rounded-sm text-xl"
+            className="flex items-center text-neutral-400 gap-2 font-light px-3 py-2 hover:bg-neutral-700 hover:text-white active:bg-neutral-600 rounded-sm text-xl"
             onClick={() => {
               handleLogout();
               closeSidebar();

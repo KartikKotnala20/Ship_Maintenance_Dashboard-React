@@ -1,3 +1,4 @@
+
 import { useNavigate } from "react-router-dom";
 import { useComponents } from "../../contexts/ComponentsContext";
 
@@ -6,12 +7,12 @@ export default function ComponentList() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-[#F2F9FF] min-h-screen p-10 w-full text-gray-900">
-      <h2 className="text-4xl font-bold mb-8 text-center animate-fade-in">
+    <div className="bg-[#F2F9FF] min-h-screen px-4 py-8 sm:px-6 md:px-10 w-full text-gray-900">
+      <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center animate-fade-in">
         Component Management
       </h2>
 
-      <div className="flex justify-end mb-6">
+      <div className="flex justify-center sm:justify-end mb-6">
         <button
           className="group relative h-12 rounded-full border border-neutral-200 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 shadow-lg hover:shadow-xl transition-transform transform hover:scale-110"
           onClick={() => navigate("/dashboard/components/new")}
@@ -27,7 +28,7 @@ export default function ComponentList() {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
         {components.map((comp) => (
           <div
             key={comp.id}
@@ -37,24 +38,24 @@ export default function ComponentList() {
             }}
           >
             <p className="text-lg font-bold text-white">{comp.name}</p>
-            <p className="text-shadow-lime-50 text-white">Serial : {comp.serialNumber}</p>
-            <p className="text-shadow-lime-50 text-white">Ship ID : {comp.shipId}</p>
-            <div className="flex gap-4 mt-4">
+            <p className="text-white">Serial : {comp.serialNumber}</p>
+            <p className="text-white">Ship ID : {comp.shipId}</p>
+            <div className="flex flex-wrap gap-3 mt-4">
               <button
                 onClick={() => navigate(`/dashboard/components/${comp.id}`)}
-                className="text-white bg-gradient-to-r from-gray-400 via-gray-400 to-gray-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 shadow-lg shadow-gray-500/50 dark:shadow-lg dark:shadow-gray-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 hover:bg-gray-800 hover:scale-105 transition-transform"
+                className="text-white bg-gradient-to-r from-gray-400 via-gray-400 to-gray-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 shadow-lg font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 transition-transform"
               >
                 View
               </button>
               <button
                 onClick={() => navigate(`/dashboard/components/edit/${comp.id}`)}
-                className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2  hover:bg-blue-700 hover:scale-105 transition-transform"
+                className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 transition-transform"
               >
                 Edit
               </button>
               <button
                 onClick={() => deleteComponent(comp.id)}
-                className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 hover:bg-red-700 hover:scale-105 transition-transform"
+                className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-105 transition-transform"
               >
                 Delete
               </button>
@@ -65,3 +66,6 @@ export default function ComponentList() {
     </div>
   );
 }
+
+
+
