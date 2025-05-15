@@ -10,7 +10,6 @@ import ComponentForm from "./components/Components/ComponentForm";
 import ComponentDetail from "./components/Components/ComponentDetail";
 import JobsPage from "./pages/JobsPage.jsx";
 import JobCalendar from "./components/Jobs/JobCalendar";
-import Layout from "./pages/layout.jsx";
 import DashboardHome from "./pages/DashboardHome"; 
 import NotificationCenter from "./components/Notifications/NotificationCenter.jsx";
 

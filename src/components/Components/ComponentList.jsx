@@ -31,27 +31,30 @@ export default function ComponentList() {
         {components.map((comp) => (
           <div
             key={comp.id}
-            className="bg-white border border-gray-300 p-6 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 animate-slide-up"
+            className="bg-white border border-gray-300 bg-cover p-6 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 animate-slide-up"
+            style={{
+              backgroundImage: `url('https://as1.ftcdn.net/v2/jpg/10/86/70/18/1000_F_1086701812_ZAOeQFQE9uMltYi2SelzRNkMuElswcmQ.jpg')`,
+            }}
           >
-            <p className="text-lg font-semibold text-gray-700">{comp.name}</p>
-            <p className="text-sm text-gray-600">Serial: {comp.serialNumber}</p>
-            <p className="text-sm text-gray-600">Ship ID: {comp.shipId}</p>
+            <p className="text-lg font-bold text-white">{comp.name}</p>
+            <p className="text-shadow-lime-50 text-white">Serial : {comp.serialNumber}</p>
+            <p className="text-shadow-lime-50 text-white">Ship ID : {comp.shipId}</p>
             <div className="flex gap-4 mt-4">
               <button
                 onClick={() => navigate(`/dashboard/components/${comp.id}`)}
-                className="bg-gray-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-gray-800 hover:scale-105 transition-transform"
+                className="text-white bg-gradient-to-r from-gray-400 via-gray-400 to-gray-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 shadow-lg shadow-gray-500/50 dark:shadow-lg dark:shadow-gray-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 hover:bg-gray-800 hover:scale-105 transition-transform"
               >
                 View
               </button>
               <button
                 onClick={() => navigate(`/dashboard/components/edit/${comp.id}`)}
-                className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700 hover:scale-105 transition-transform"
+                className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2  hover:bg-blue-700 hover:scale-105 transition-transform"
               >
                 Edit
               </button>
               <button
                 onClick={() => deleteComponent(comp.id)}
-                className="bg-red-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-red-700 hover:scale-105 transition-transform"
+                className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 hover:bg-red-700 hover:scale-105 transition-transform"
               >
                 Delete
               </button>

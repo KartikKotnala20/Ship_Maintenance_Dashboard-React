@@ -2,15 +2,30 @@ import { useShips } from "../../contexts/ShipsContext";
 import { useJobs } from "../../contexts/JobsContext";
 import { useComponents } from "../../contexts/ComponentsContext";
 
-export default function KPICards() {
+function KPICards() {
   const { ships } = useShips();
   const { jobs } = useJobs();
   const { components } = useComponents();
 
   const totalShips = ships.length;
-  const jobsInProgress = jobs.filter((j) => j.status === "in-progress").length;
-  const jobsCompleted = jobs.filter((j) => j.status === "completed").length;
-  const overdueComponents = components.filter((c) => c.isOverdue).length;
+
+  const jobsInProgress = jobs.filter(
+    (j) => j.status?.toLowerCase() === "in-progress"
+  ).length;
+
+  const jobsCompleted = jobs.filter(
+    (j) => j.status?.toLowerCase() === "completed"
+  ).length;
+
+  const maintenanceCycleDays = 30;
+  const today = new Date();
+
+  const overdueComponents = components.filter((c) => {
+    const lastDate = new Date(c.lastMaintenanceDate);
+    const dueDate = new Date(lastDate);
+    dueDate.setDate(dueDate.getDate() + maintenanceCycleDays);
+    return dueDate < today;
+  }).length;
 
   const cards = [
     {
@@ -49,3 +64,5 @@ export default function KPICards() {
     </div>
   );
 }
+
+export default KPICards;
