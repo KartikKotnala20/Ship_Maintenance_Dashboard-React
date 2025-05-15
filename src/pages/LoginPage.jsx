@@ -25,11 +25,11 @@ export default function LoginPage() {
 
   return (
     <div
-      className="min-h-screen flex items-center gap-50 bg-center bg-cover bg-no-repeat font-[Quicksand] bg-[url(https://cdn.pixabay.com/photo/2023/08/05/08/15/ship-8170663_1280.jpg)]"
-      // style={{
-      //   backgroundImage:
-      //     URL("../assets/ship"),
-      // }}
+      className="min-h-screen flex items-center gap-50 bg-center bg-cover bg-no-repeat font-[Quicksand] "
+      style={{
+        backgroundImage:
+          URL("https://cdn.pixabay.com/photo/2023/08/05/08/15/ship-8170663_1280.jpg"),
+      }}
     >
       <form
         onSubmit={handleLogin}
