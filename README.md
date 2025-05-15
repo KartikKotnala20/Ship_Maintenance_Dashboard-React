@@ -2,7 +2,7 @@
 A React-based dashboard application for managing ship maintenance tasks, components, and job assignments. This single-page application simulates user authentication, supports dynamic in-app notifications, and stores persistent data using localStorage.
 
 # 🔗 Live Demo
-https://ship-maintenance-dashboard-seven.vercel.app/login
+https://ship-maintenance-dashboard-seven.vercel.app
 
 
 # 📦 Features
