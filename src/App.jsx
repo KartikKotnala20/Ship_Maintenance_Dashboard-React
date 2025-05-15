@@ -23,7 +23,6 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<LoginPage />} />
-           {/* <Route path="/dashboard" element={user ? <DashboardPage /> : <Navigate to="/login" />}> */}
           <Route path="/dashboard" element={<DashboardPage/>}>
               <Route index element={<DashboardHome />} />
               <Route path="ships" element={<ShipsPage />} />

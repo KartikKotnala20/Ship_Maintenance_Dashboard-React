@@ -25,11 +25,8 @@ export default function LoginPage() {
 
   return (
     <div
-      className="min-h-screen flex items-center gap-50 bg-center bg-cover bg-no-repeat font-[Quicksand] "
-      style={{
-        backgroundImage:
-          URL("https://cdn.pixabay.com/photo/2023/08/05/08/15/ship-8170663_1280.jpg"),
-      }}
+      className="min-h-screen flex items-center gap-56 bg-center  opacity-75 bg-cover bg-no-repeat font-[Quicksand] bg-[url(https://cdn.pixabay.com/photo/2015/09/21/17/54/rope-950355_1280.jpg)]"
+      
     >
       <form
         onSubmit={handleLogin}
@@ -79,7 +76,7 @@ export default function LoginPage() {
 
         {/* <p className="text-white text-[18px] text-center">Login with a social media account</p> */}
       </form>
-      <h1 className="flex text-center text-[60px] font-light select-none">SHIPS <br />MAINTENANCE</h1>
+      <h1 className="flex text-center text-[60px] font-light select-none  ">SHIPS <br />MAINTENANCE</h1>
     </div>
   );
 }
